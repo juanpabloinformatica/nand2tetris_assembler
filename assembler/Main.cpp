@@ -19,4 +19,17 @@ int main(int argc, char *argv[]) {
   // std::cout << parser.getCommandType("1") << std::endl;
   // std::cout << parser.getCommandType("(xxx)") << std::endl;
   // std::cout << parser.getCommandType("()") << std::endl;
+
+  //010 ==> D
+  std::cout << parser.getDest("1111110000010000") << std::endl;
+  std::cout << "Instruction: " << std::endl;
+  //000 ==> null
+  std::cout << parser.getDest("1110001100000010") << std::endl;
+  std::cout << "Instruction: " << std::endl;
+  //010 ==> D
+  std::cout << parser.getDest("1110110000010000") << std::endl;
+  std::cout << "Instruction: " << std::endl;
+  //001 == M
+  std::cout << parser.getDest("1111110111001000") << std::endl;
+
 }
