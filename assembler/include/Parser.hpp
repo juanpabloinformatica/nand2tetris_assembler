@@ -17,7 +17,7 @@ public:
   Parser(std::string filepath);
   bool hasMoreCommands();
   bool advance();
-  CommandType getCommandType(std::string currentCommand);
+  COMMAND_TYPE getCommandType(std::string currentCommand);
   // std::string getSymbol(Command currentCommand);
   // std::string getDest(Command currentCommand);
   // std::string getComp(Command currentCommand);
@@ -25,7 +25,9 @@ public:
   std::string getSymbol(std::string currentCommand);
   // std::string getDest(std::string currentCommand);
   C_INSTRUCTION_DEST getDest(std::string currentCommand);
-  std::string getComp(std::string currentCommand);
-  std::string getJump(std::string currentCommand);
+  // std::string getComp(std::string currentCommand);
+  C_INSTRUCTION_COMP getComp(std::string currentCommand);
+  // std::string getJump(std::string currentCommand);
+  C_INSTRUCTION_JUMP getJump(std::string currentCommand);
 };
 #endif
