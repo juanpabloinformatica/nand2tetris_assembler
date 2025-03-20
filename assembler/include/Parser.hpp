@@ -27,7 +27,7 @@ public:
   C_INSTRUCTION_DEST getDest(std::string currentCommand);
   // std::string getComp(std::string currentCommand);
   C_INSTRUCTION_COMP getComp(std::string currentCommand);
-  // std::string getJump(std::string currentCommand);
+  // std::string getJump(std::string currentCommand)
   C_INSTRUCTION_JUMP getJump(std::string currentCommand);
 };
 #endif

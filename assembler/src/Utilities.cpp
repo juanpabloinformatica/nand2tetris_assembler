@@ -10,15 +10,19 @@ unsigned long int bitsToULong(std::string instructionString,
     break;
   case C_COMP:
     return (std::bitset<COMP_BITS_LENGTH>(
-                instructionString.substr(INS_D1, COMP_BITS_LENGTH)))
+                instructionString.substr(INS_A_VALUE, COMP_BITS_LENGTH)))
         .to_ullong();
     break;
   case C_JUMP:
     return (std::bitset<JUMP_BITS_LENGTH>(
-                instructionString.substr(INS_D1, JUMP_BITS_LENGTH))
+                instructionString.substr(INS_J1, JUMP_BITS_LENGTH))
                 .to_ullong());
     break;
   default:
     return C_UNDEFINED;
   }
 };
+
+// void cleanAssembly(std::fstream assemblyFile){
+// }
+

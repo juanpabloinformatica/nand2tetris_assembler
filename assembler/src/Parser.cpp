@@ -4,22 +4,21 @@
 #include <cstring>
 #include <fstream>
 #include <ios>
+#include <regex>
 
 Parser::Parser(std::string filepath) {
-  // std::cout << "Entering here" << std::endl;
-  // this->file = std::fstream(filepath);
-  // // std::cout<<this->file
-  // std::string text;
-  // while (std::getline(this->file, text)) {
-  //   std::cout << "Has More commands:" << " [" << std::boolalpha
-  //             << this->hasMoreCommands() << "]" << std::endl;
-  //   std::cout << text << std::endl;
-  // }
-  // std::cout << "Has More commands:" << " [" << std::boolalpha
-  //           << this->hasMoreCommands() << "]" << std::endl;
+  std::cout << "[ INIT PARSING ]" << std::endl;
+  std::regex expr{"^//"};
+  this->file = std::fstream(filepath);
+  std::string text;
+  while (std::getline(this->file, text)) {
+    if (std::regex_match(text, expr)) {
+    }
+    std::remove_if(text.begin(), text.end(), isspace);
+  }
 }
-bool Parser::hasMoreCommands() { return !this->file.eof(); }
-bool Parser::advance() { return this->hasMoreCommands(); }
+// bool Parser::hasMoreCommands() { return !this->file.eof(); }
+// bool Parser::advance() { return this->hasMoreCommands(); }
 
 COMMAND_TYPE Parser::getCommandType(std::string currentCommand) {
   COMMAND_TYPE commandType;
@@ -44,6 +43,7 @@ std::string Parser::getSymbol(std::string currentCommand) {
 }
 C_INSTRUCTION_DEST Parser::getDest(std::string currentCommand) {
   // this get d1,d2,d3 from c_instruction
+  // std::cout<<""
   switch (bitsToULong(currentCommand, C_DEST, INS_D1)) {
   case DEST_NULL:
     return DEST_NULL;
@@ -74,7 +74,7 @@ C_INSTRUCTION_DEST Parser::getDest(std::string currentCommand) {
   }
 }
 C_INSTRUCTION_COMP Parser::getComp(std::string currentCommand) {
-  switch (bitsToULong(currentCommand, C_COMP, INS_C1)) {
+  switch (bitsToULong(currentCommand, C_COMP, INS_A_VALUE)) {
 
   case COMP_ZERO:
     return COMP_ZERO;

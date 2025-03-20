@@ -1,13 +1,20 @@
 #ifndef __UTILITIES__
 #define __UTILITIES__
 #include <bitset>
+#include <fstream>
 #include <string>
+#include <regex>
 #define DEST_BITS_LENGTH 3
 #define JUMP_BITS_LENGTH 3
 #define COMP_BITS_LENGTH 7
-enum C_INSTRUCTION_SECTION { C_UNDEFINED, C_DEST = 0, C_COMP = 1, C_JUMP = 2 };
+enum C_INSTRUCTION_SECTION {
+  C_UNDEFINED = -1,
+  C_DEST = 0,
+  C_COMP = 1,
+  C_JUMP = 2
+};
 enum COMMAND_TYPE { A_COMMAND, L_COMMAND, C_COMMAND };
-enum C_INSTRUCTION_BITS {
+enum INSTRUCTION_BITS {
   INS_UNDEFINED = -1,
   INS_OP_CODE = 0,
   INS_DEFAULT_1 = 1,
@@ -81,4 +88,5 @@ enum C_INSTRUCTION_JUMP {
 };
 unsigned long int bitsToULong(std::string instructionString,
                               C_INSTRUCTION_SECTION section, int initPos);
+// void cleanAssembly(std::fstream assemblyFile);
 #endif
