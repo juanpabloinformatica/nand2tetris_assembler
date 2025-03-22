@@ -3,4 +3,6 @@
 #include "Parser.hpp"
 #include "Utilities.hpp"
 void testingParser(void);
+void testParserDest(void);
+void testParserComp(void);
 #endif

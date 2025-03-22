@@ -23,11 +23,11 @@ public:
   // std::string getComp(Command currentCommand);
   // std::string getJump(Command currentCommand);
   std::string getSymbol(std::string currentCommand);
-  // std::string getDest(std::string currentCommand);
-  C_INSTRUCTION_DEST getDest(std::string currentCommand);
-  // std::string getComp(std::string currentCommand);
-  C_INSTRUCTION_COMP getComp(std::string currentCommand);
-  // std::string getJump(std::string currentCommand)
-  C_INSTRUCTION_JUMP getJump(std::string currentCommand);
+  std::string getDest(int *indexCurrentCommand, std::string currentCommand);
+  // C_INSTRUCTION_DEST getDest(std::string currentCommand);
+  std::string getComp(int *indexCurrentCommand, std::string currentCommand);
+  // C_INSTRUCTION_COMP getComp(std::string currentCommand);
+  std::string getJump(int *indexCurrentCommand, std::string currentCommand);
+  // C_INSTRUCTION_JUMP getJump(std::string currentCommand);
 };
 #endif
