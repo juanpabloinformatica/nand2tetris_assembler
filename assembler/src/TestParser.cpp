@@ -1,66 +1,70 @@
 #include "../include/TestParser.hpp"
 #include <cassert>
+typedef struct ParserTester ParserTester;
+struct ParserTester {
+  std::string dest;
+  std::string comp;
+  std::string jump;
+};
 void testingParser() {
-  // Parser parser = Parser("");
-  // // dest,comp,jump
-  //
-  // // 1110110000010000
-  // // dest = 010 = D
-  // // comp = 0110000 = A
-  // // jump = 000 = null
-  // // M=A;
-  // int i1Dest = parser.getDest("1110110000010000");
-  // int i1Comp = parser.getComp("1110110000010000");
-  // int i1Jump = parser.getJump("1110110000010000");
-  // assert(i1Dest == 2);
-  // assert(i1Comp == 48);
-  // assert(i1Jump == 0);
-  // std::cout << "First access working" <<std::endl;
-  // // 1110001100001000
-  // //Dest == 001 ==> M
-  // //comp == 0001100 ==> D
-  // //jump == 000 ==> null
-  // int i2Dest = parser.getDest("1110001100001000");
-  // int i2Comp = parser.getComp("1110001100001000");
-  // int i2Jump = parser.getJump("1110001100001000");
-  // assert(i2Dest == 1);
-  // assert(i2Comp == 12);
-  // assert(i2Jump == 0);
-  // std::cout << "second access working" <<std::endl;
-  // // 1110110000010000
-  // // 1110001100001000
-  // // 1111110000010000
-}
-void testParserDest() {
-  std::string arrT[3] = {"D=", "AD=", "COMP;JUMP"};
-  std::string arrR[3];
-  Parser parser = Parser("");
-  // This will be reinitialized each time the
-  // while will run again
-  int *ptrIndexCurrentCommand;
-  int indexCurrentCommand = 0;
-  ptrIndexCurrentCommand = &indexCurrentCommand;
-  // -----------
-  arrR[0] = parser.getDest(ptrIndexCurrentCommand, arrT[0]);
-  arrR[1] = parser.getDest(ptrIndexCurrentCommand, arrT[1]);
-  arrR[2] = parser.getDest(ptrIndexCurrentCommand, arrT[2]);
-  assert(arrR[0] == "D");
-  assert(arrR[1] == "AD");
-  assert(arrR[2] == "");
-}
-void testParserComp() {
-  std::string arrT[4] = {"D=0;", "0;JMP", "COMP;JUMP", "D-A;"};
-  std::string arrR[4];
+  ParserTester parserTesterArray[5];
+  std::string testArray[5] = {"D=A", "M=D", "D=D-M", "M=M+D", "D;JLE"};
   Parser parser = Parser("");
   int *ptrIndexCurrentCommand;
   int indexCurrentCommand = 0;
   ptrIndexCurrentCommand = &indexCurrentCommand;
-  arrR[0] = parser.getComp( ptrIndexCurrentCommand ,arrT[0] );
-  // arrR[1] = parser.getComp( ptrIndexCurrentCommand ,arrT[1] );
-  // arrR[2] = parser.getComp( ptrIndexCurrentCommand ,arrT[2] );
-  // arrR[3] = parser.getComp( ptrIndexCurrentCommand ,arrT[3] );
-  assert(arrR[0] == "0");
-  assert(arrR[1] == "0");
-  assert(arrR[2] == "COMP");
-  assert(arrR[3] == "D-A");
+  parserTesterArray[0].dest =
+      parser.getDest(ptrIndexCurrentCommand, testArray[0]);
+  parserTesterArray[0].comp =
+      parser.getComp(ptrIndexCurrentCommand, testArray[0]);
+  parserTesterArray[0].jump =
+      parser.getJump(ptrIndexCurrentCommand, testArray[0]);
+  assert(parserTesterArray[0].dest == "D");
+  assert(parserTesterArray[0].comp == "A");
+  assert(parserTesterArray[0].jump == "");
+
+  indexCurrentCommand = 0;
+  parserTesterArray[1].dest =
+      parser.getDest(ptrIndexCurrentCommand, testArray[1]);
+  parserTesterArray[1].comp =
+      parser.getComp(ptrIndexCurrentCommand, testArray[1]);
+  parserTesterArray[1].jump =
+      parser.getJump(ptrIndexCurrentCommand, testArray[1]);
+  assert(parserTesterArray[1].dest == "M");
+  assert(parserTesterArray[1].comp == "D");
+  assert(parserTesterArray[1].jump == "");
+
+  indexCurrentCommand = 0;
+  parserTesterArray[2].dest =
+      parser.getDest(ptrIndexCurrentCommand, testArray[2]);
+  parserTesterArray[2].comp =
+      parser.getComp(ptrIndexCurrentCommand, testArray[2]);
+  parserTesterArray[2].jump =
+      parser.getJump(ptrIndexCurrentCommand, testArray[2]);
+  assert(parserTesterArray[2].dest == "D");
+  assert(parserTesterArray[2].comp == "D-M");
+  assert(parserTesterArray[2].jump == "");
+
+  indexCurrentCommand = 0;
+  parserTesterArray[3].dest =
+      parser.getDest(ptrIndexCurrentCommand, testArray[3]);
+  parserTesterArray[3].comp =
+      parser.getComp(ptrIndexCurrentCommand, testArray[3]);
+  parserTesterArray[3].jump =
+      parser.getJump(ptrIndexCurrentCommand, testArray[3]);
+  assert(parserTesterArray[3].dest == "M");
+  assert(parserTesterArray[3].comp == "M+D");
+  assert(parserTesterArray[3].jump == "");
+
+  indexCurrentCommand = 0;
+  parserTesterArray[4].dest =
+      parser.getDest(ptrIndexCurrentCommand, testArray[4]);
+  parserTesterArray[4].comp =
+      parser.getComp(ptrIndexCurrentCommand, testArray[4]);
+  parserTesterArray[4].jump =
+      parser.getJump(ptrIndexCurrentCommand, testArray[4]);
+  assert(parserTesterArray[4].dest == "");
+  assert(parserTesterArray[4].comp == "D");
+  assert(parserTesterArray[4].jump == "JLE");
 }
+

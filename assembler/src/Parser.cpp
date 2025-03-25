@@ -51,13 +51,7 @@ std::string Parser::getDest(int *ptrIndexCurrentCommand,
   expr = "=";
   dest = "";
   int i;
-  // for (i = *ptrIndexCurrentCommand;
-  //      i < currentCommandLenght && (currentChar = currentCommand[i]) != expr;
-  //      i++) {
-  //   dest += currentChar;
-  // }
-  // int i;
-  for (i = 0;
+  for (i = *ptrIndexCurrentCommand;
        i < currentCommandLenght && (currentChar = currentCommand[i]) != expr;
        i++) {
     dest += currentChar;
@@ -66,10 +60,9 @@ std::string Parser::getDest(int *ptrIndexCurrentCommand,
     return "";
   }
   // Modifying ptrIndexCurrentCommand don't know if good thing to do
-  // *ptrIndexCurrentCommand = i;
+  *ptrIndexCurrentCommand = i+1;
   return dest;
 }
-
 std::string Parser::getComp(int *ptrIndexCurrentCommand,
                             std::string currentCommand) {
   std::string comp;
@@ -79,21 +72,32 @@ std::string Parser::getComp(int *ptrIndexCurrentCommand,
   expr = ";";
   comp = "";
   int i;
-  // for (i = *ptrIndexCurrentCommand;
-  //      i < currentCommandLenght && (currentChar = currentCommand[i]) != expr;
-  //      i++) {
-  //   comp += currentChar;
-  // }
-  for (i = 2;
+  for (i = *ptrIndexCurrentCommand;
        i < currentCommandLenght && (currentChar = currentCommand[i]) != expr;
        i++) {
     comp += currentChar;
   }
-  if (i == currentCommandLenght) {
-    return "";
-  }
-  // *ptrIndexCurrentCommand = i;
+  // Modifying ptrIndexCurrentCommand don't know if good thing to do
+  *ptrIndexCurrentCommand = i+1;
   return comp;
+}
+std::string Parser::getJump(int *ptrIndexCurrentCommand,
+                            std::string currentCommand) {
+  std::string jump;
+  std::string expr;
+  std::string currentChar;
+  int currentCommandLenght = currentCommand.length();
+  expr = " ";
+  jump = "";
+  int i;
+  for (i = *ptrIndexCurrentCommand;
+       i < currentCommandLenght && (currentChar = currentCommand[i]) != expr;
+       i++) {
+    jump += currentChar;
+  }
+  // Modifying ptrIndexCurrentCommand don't know if good thing to do
+  *ptrIndexCurrentCommand = i+1;
+  return jump;
 }
 // C_INSTRUCTION_DEST Parser::getDest(std::string currentCommand) {
 // this get d1,d2,d3 from c_instruction

@@ -2,8 +2,8 @@
 #define __UTILITIES__
 #include <bitset>
 #include <fstream>
-#include <string>
 #include <regex>
+#include <string>
 #define DEST_BITS_LENGTH 3
 #define JUMP_BITS_LENGTH 3
 #define COMP_BITS_LENGTH 7
@@ -88,5 +88,8 @@ enum C_INSTRUCTION_JUMP {
 };
 unsigned long int bitsToULong(std::string instructionString,
                               C_INSTRUCTION_SECTION section, int initPos);
+C_INSTRUCTION_DEST stringToDestEnum(std::string dest);
+C_INSTRUCTION_COMP stringToCompEnum(std::string comp);
+C_INSTRUCTION_JUMP stringToJumpEnum(std::string jump);
 // void cleanAssembly(std::fstream assemblyFile);
 #endif
