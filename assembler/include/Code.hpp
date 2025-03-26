@@ -1,5 +1,5 @@
-#ifndef __PARSER__
-#define __PARSER__
+#ifndef __CODE__
+#define __CODE__
 #include "../include/Utilities.hpp"
 #include <string>
 class Code {
@@ -10,15 +10,15 @@ private:
   std::string binaryInstruction;
 
 public:
-  // std::bitset<DEST_BITS_LENGTH> dest(std::string currentDest);
-  // std::bitset<COMP_BITS_LENGTH> comp(std::string currentComp);
-  // std::bitset<JUMP_BITS_LENGTH> jump(std::string currentJump);
-  // std::string dest(std::string currentDest);
-  // std::string comp(std::string currentComp);
-  // std::string jump(std::string currentJump);
+  Code();
   void setDestBinary(std::string currentDest);
   void setCompBinary(std::string currentComp);
   void setJumpBinary(std::string currentJump);
-  void setBinaryInstruction(void);
+  void setBinaryInstruction(COMMAND_TYPE type);
+  std::string getDestBinary(void);
+  std::string getCompBinary(void);
+  std::string getJumpBinary(void);
+  std::string getBinaryInstruction(void);
+
 };
 #endif
