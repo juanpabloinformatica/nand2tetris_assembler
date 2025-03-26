@@ -1,13 +1,13 @@
 #include "../include/Parser.hpp"
-#include "../include/Utilities.hpp"
-#include <bitset>
-#include <cstring>
-#include <fstream>
-#include <ios>
-#include <regex>
 
 Parser::Parser(std::string filepath) {
   std::cout << "[ INIT PARSING ]" << std::endl;
+  this->file = std::fstream(filepath);
+  this->dest = "";
+  this->comp = "";
+  this->jump = "";
+  this->indexCurrentInstruction = 0;
+
   // std::regex expr{"^//"};
   // this->file = std::fstream(filepath);
   // std::string text;
@@ -41,9 +41,10 @@ std::string Parser::getSymbol(std::string currentCommand) {
   }
   return currentCommand.substr(1, currentCommand.length() - 1);
 }
-
-std::string Parser::getDest(int *ptrIndexCurrentCommand,
-                            std::string currentCommand) {
+void Parser::setIndexCurrentInstruction(int indexCurrentInstruction) {
+  this->indexCurrentInstruction = indexCurrentInstruction;
+}
+void Parser::setDest(std::string currentCommand) {
   std::string dest;
   std::string expr;
   std::string currentChar;
@@ -51,20 +52,19 @@ std::string Parser::getDest(int *ptrIndexCurrentCommand,
   expr = "=";
   dest = "";
   int i;
-  for (i = *ptrIndexCurrentCommand;
+  for (i = this->indexCurrentInstruction;
        i < currentCommandLenght && (currentChar = currentCommand[i]) != expr;
        i++) {
     dest += currentChar;
   }
   if (i == currentCommandLenght) {
-    return "";
+    this->dest = "";
+    return;
   }
-  // Modifying ptrIndexCurrentCommand don't know if good thing to do
-  *ptrIndexCurrentCommand = i+1;
-  return dest;
+  this->setIndexCurrentInstruction(i + 1);
+  this->dest = dest;
 }
-std::string Parser::getComp(int *ptrIndexCurrentCommand,
-                            std::string currentCommand) {
+void Parser::setComp(std::string currentCommand) {
   std::string comp;
   std::string expr;
   std::string currentChar;
@@ -72,17 +72,15 @@ std::string Parser::getComp(int *ptrIndexCurrentCommand,
   expr = ";";
   comp = "";
   int i;
-  for (i = *ptrIndexCurrentCommand;
+  for (i = this->indexCurrentInstruction;
        i < currentCommandLenght && (currentChar = currentCommand[i]) != expr;
        i++) {
     comp += currentChar;
   }
-  // Modifying ptrIndexCurrentCommand don't know if good thing to do
-  *ptrIndexCurrentCommand = i+1;
-  return comp;
+  this->setIndexCurrentInstruction(i + 1);
+  this->comp = comp;
 }
-std::string Parser::getJump(int *ptrIndexCurrentCommand,
-                            std::string currentCommand) {
+void Parser::setJump(std::string currentCommand) {
   std::string jump;
   std::string expr;
   std::string currentChar;
@@ -90,15 +88,74 @@ std::string Parser::getJump(int *ptrIndexCurrentCommand,
   expr = " ";
   jump = "";
   int i;
-  for (i = *ptrIndexCurrentCommand;
+  for (i = this->indexCurrentInstruction;
        i < currentCommandLenght && (currentChar = currentCommand[i]) != expr;
        i++) {
     jump += currentChar;
   }
-  // Modifying ptrIndexCurrentCommand don't know if good thing to do
-  *ptrIndexCurrentCommand = i+1;
-  return jump;
+  this->setIndexCurrentInstruction(i + 1);
+  this->jump = jump;
 }
+void Parser::resetParser(void) {
+  this->dest = "";
+  this->comp = "";
+  this->jump = "";
+  this->indexCurrentInstruction = 0;
+}
+std::string Parser::getDest() { return this->dest; }
+std::string Parser::getComp() { return this->comp; }
+std::string Parser::getJump() { return this->jump; }
+// std::string Parser::getDest(std::string currentCommand) {
+//   std::string dest;
+//   std::string expr;
+//   std::string currentChar;
+//   int currentCommandLenght = currentCommand.length();
+//   expr = "=";
+//   dest = "";
+//   int i;
+//   for (i = this->indexCurrentInstruction;
+//        i < currentCommandLenght && (currentChar = currentCommand[i]) != expr;
+//        i++) {
+//     dest += currentChar;
+//   }
+//   if (i == currentCommandLenght) {
+//     return "";
+//   }
+//   this->setIndexCurrentInstruction(i + 1);
+//   return dest;
+// }
+// std::string Parser::getComp(std::string currentCommand) {
+//   std::string comp;
+//   std::string expr;
+//   std::string currentChar;
+//   int currentCommandLenght = currentCommand.length();
+//   expr = ";";
+//   comp = "";
+//   int i;
+//   for (i = this->indexCurrentInstruction;
+//        i < currentCommandLenght && (currentChar = currentCommand[i]) != expr;
+//        i++) {
+//     comp += currentChar;
+//   }
+//   this->setIndexCurrentInstruction(i + 1);
+//   return comp;
+// }
+// std::string Parser::getJump(std::string currentCommand) {
+//   std::string jump;
+//   std::string expr;
+//   std::string currentChar;
+//   int currentCommandLenght = currentCommand.length();
+//   expr = " ";
+//   jump = "";
+//   int i;
+//   for (i = this->indexCurrentInstruction;
+//        i < currentCommandLenght && (currentChar = currentCommand[i]) != expr;
+//        i++) {
+//     jump += currentChar;
+//   }
+//   this->setIndexCurrentInstruction(i + 1);
+//   return jump;
+// }
 // C_INSTRUCTION_DEST Parser::getDest(std::string currentCommand) {
 // this get d1,d2,d3 from c_instruction
 // std::cout<<""

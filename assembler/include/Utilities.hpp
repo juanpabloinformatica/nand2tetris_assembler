@@ -91,5 +91,7 @@ unsigned long int bitsToULong(std::string instructionString,
 C_INSTRUCTION_DEST stringToDestEnum(std::string dest);
 C_INSTRUCTION_COMP stringToCompEnum(std::string comp);
 C_INSTRUCTION_JUMP stringToJumpEnum(std::string jump);
-// void cleanAssembly(std::fstream assemblyFile);
+
+
+
 #endif
