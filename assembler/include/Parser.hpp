@@ -11,6 +11,7 @@ private:
   std::string dest;
   std::string comp;
   std::string jump;
+  std::string symbol;
   int indexCurrentInstruction;
 
 public:
@@ -19,13 +20,14 @@ public:
   bool hasMoreCommands();
   bool advance();
   COMMAND_TYPE getCommandType(std::string currentCommand);
-  std::string getSymbol(std::string currentCommand);
+  std::string getSymbol();
   std::string getDest();
   std::string getComp();
   std::string getJump();
-  void setDest(std::string dest);
-  void setComp(std::string comp);
-  void setJump(std::string jump);
+  void setSymbol(std::string currentCommand);
+  void setDest(std::string currentCommand);
+  void setComp(std::string currentCommand);
+  void setJump(std::string currentCommand);
   void setIndexCurrentInstruction(int indexCurrentInstruction);
   void resetParser(void);
   // ~Parser();
