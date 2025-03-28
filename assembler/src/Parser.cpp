@@ -1,8 +1,7 @@
-#include "../include/Parser.hpp"
+#include "Parser.hpp"
 
-Parser::Parser(std::string filepath) {
+Parser::Parser() {
   std::cout << "[ INIT PARSING ]" << std::endl;
-  this->file = std::fstream(filepath);
   this->dest = "";
   this->comp = "";
   this->jump = "";
@@ -21,21 +20,34 @@ Parser::Parser(std::string filepath) {
 // bool Parser::hasMoreCommands() { return !this->file.eof(); }
 // bool Parser::advance() { return this->hasMoreCommands(); }
 
-COMMAND_TYPE Parser::getCommandType(std::string currentCommand) {
-  COMMAND_TYPE commandType;
+// COMMAND_TYPE Parser::getCommandType(std::string currentCommand) {
+//   COMMAND_TYPE commandType;
+//   if (currentCommand.substr(0, 1) == std::string("(") &&
+//       currentCommand.substr((currentCommand.length() - 1), 1) ==
+//           std::string(")")) {
+//     return L_COMMAND;
+//   }
+//   if (currentCommand.substr(0, 1) != std::string("@")) {
+//     return C_COMMAND;
+//   }
+//   return A_COMMAND;
+//   return commandType;
+// }
+void Parser::setIndexCurrentInstruction(int indexCurrentInstruction) {
+  this->indexCurrentInstruction = indexCurrentInstruction;
+}
+void Parser::setCommandType(std::string currentCommand) {
   if (currentCommand.substr(0, 1) == std::string("(") &&
       currentCommand.substr((currentCommand.length() - 1), 1) ==
           std::string(")")) {
-    return L_COMMAND;
+    this->commandType = L_COMMAND;
+    return;
   }
   if (currentCommand.substr(0, 1) != std::string("@")) {
-    return C_COMMAND;
+    this->commandType = C_COMMAND;
+    return;
   }
-  return A_COMMAND;
-  return commandType;
-}
-void Parser::setIndexCurrentInstruction(int indexCurrentInstruction) {
-  this->indexCurrentInstruction = indexCurrentInstruction;
+  this->commandType = A_COMMAND;
 }
 void Parser::setDest(std::string currentCommand) {
   std::string dest;
@@ -105,6 +117,7 @@ void Parser::resetParser(void) {
   this->symbol = "";
   this->indexCurrentInstruction = 0;
 }
+COMMAND_TYPE Parser::getCommandType() { return this->commandType; }
 std::string Parser::getSymbol() { return this->symbol; }
 std::string Parser::getDest() { return this->dest; }
 std::string Parser::getComp() { return this->comp; }

@@ -12,18 +12,20 @@ private:
   std::string comp;
   std::string jump;
   std::string symbol;
+  COMMAND_TYPE commandType;
   int indexCurrentInstruction;
 
 public:
   std::fstream file;
-  Parser(std::string filepath);
+  Parser();
   bool hasMoreCommands();
   bool advance();
-  COMMAND_TYPE getCommandType(std::string currentCommand);
+  COMMAND_TYPE getCommandType();
   std::string getSymbol();
   std::string getDest();
   std::string getComp();
   std::string getJump();
+  void setCommandType(std::string currentCommand);
   void setSymbol(std::string currentCommand);
   void setDest(std::string currentCommand);
   void setComp(std::string currentCommand);

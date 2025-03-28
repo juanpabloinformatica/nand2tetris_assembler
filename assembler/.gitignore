@@ -1,3 +1,6 @@
-result
 tags
+build
+.cache
+Session.vim
+
 

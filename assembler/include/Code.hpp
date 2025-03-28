@@ -1,6 +1,6 @@
 #ifndef __CODE__
 #define __CODE__
-#include "../include/Utilities.hpp"
+#include "Utilities.hpp"
 #include <string>
 class Code {
 private:

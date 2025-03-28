@@ -1,0 +1,128 @@
+[
+ {
+  "directory": "/home/jppm/Documents/nand2tetris/assembler",
+  "arguments": [
+   "g++",
+   "-I./include",
+   "-MMD",
+   "-MP",
+   "-g",
+   "-Wall",
+   "-Werror",
+   "-std=c++11",
+   "-c",
+   "src/Code.cpp",
+   "-o",
+   "build/./src/Code.cpp.o"
+  ],
+  "file": "src/Code.cpp"
+ },
+ {
+  "directory": "/home/jppm/Documents/nand2tetris/assembler",
+  "arguments": [
+   "g++",
+   "-I./include",
+   "-MMD",
+   "-MP",
+   "-g",
+   "-Wall",
+   "-Werror",
+   "-std=c++11",
+   "-c",
+   "src/Main.cpp",
+   "-o",
+   "build/./src/Main.cpp.o"
+  ],
+  "file": "src/Main.cpp"
+ },
+ {
+  "directory": "/home/jppm/Documents/nand2tetris/assembler",
+  "arguments": [
+   "g++",
+   "-I./include",
+   "-MMD",
+   "-MP",
+   "-g",
+   "-Wall",
+   "-Werror",
+   "-std=c++11",
+   "-c",
+   "src/Parser.cpp",
+   "-o",
+   "build/./src/Parser.cpp.o"
+  ],
+  "file": "src/Parser.cpp"
+ },
+ {
+  "directory": "/home/jppm/Documents/nand2tetris/assembler",
+  "arguments": [
+   "g++",
+   "-I./include",
+   "-MMD",
+   "-MP",
+   "-g",
+   "-Wall",
+   "-Werror",
+   "-std=c++11",
+   "-c",
+   "src/SymbolTable.cpp",
+   "-o",
+   "build/./src/SymbolTable.cpp.o"
+  ],
+  "file": "src/SymbolTable.cpp"
+ },
+ {
+  "directory": "/home/jppm/Documents/nand2tetris/assembler",
+  "arguments": [
+   "g++",
+   "-I./include",
+   "-MMD",
+   "-MP",
+   "-g",
+   "-Wall",
+   "-Werror",
+   "-std=c++11",
+   "-c",
+   "src/Utilities.cpp",
+   "-o",
+   "build/./src/Utilities.cpp.o"
+  ],
+  "file": "src/Utilities.cpp"
+ },
+ {
+  "directory": "/home/jppm/Documents/nand2tetris/assembler",
+  "arguments": [
+   "g++",
+   "-I./include",
+   "-MMD",
+   "-MP",
+   "-g",
+   "-Wall",
+   "-Werror",
+   "-std=c++11",
+   "-c",
+   "test/TestCode.cpp",
+   "-o",
+   "build/./test/TestCode.cpp.o"
+  ],
+  "file": "test/TestCode.cpp"
+ },
+ {
+  "directory": "/home/jppm/Documents/nand2tetris/assembler",
+  "arguments": [
+   "g++",
+   "-I./include",
+   "-MMD",
+   "-MP",
+   "-g",
+   "-Wall",
+   "-Werror",
+   "-std=c++11",
+   "-c",
+   "test/TestParser.cpp",
+   "-o",
+   "build/./test/TestParser.cpp.o"
+  ],
+  "file": "test/TestParser.cpp"
+ }
+]

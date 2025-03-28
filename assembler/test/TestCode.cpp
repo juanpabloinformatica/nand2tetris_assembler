@@ -1,4 +1,4 @@
-#include "../include/TestCode.hpp"
+#include "TestCode.hpp"
 void testingCode(void) {
   // "D=A", "M=D", "D=D-M", "M=M+D", "D;JLE"
   // Parser
@@ -118,6 +118,11 @@ void testingCode(void) {
   // assert(code.getBinaryInstruction() == "0000000000000010");
   parser.resetParser();
   // * 0000000000011110 -> @30
-
+  parser.setSymbol(testArray[8]);
+  assert(parser.getSymbol() == "30");
+  code.setBinaryValue(parser.getSymbol());
+  code.setBinaryInstruction(A_COMMAND);
+  assert(code.getBinaryInstruction() == "0000000000011110");
+  parser.resetParser();
   // * 0000000000010001 -> @17
 }

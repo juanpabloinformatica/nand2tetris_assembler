@@ -1,4 +1,4 @@
-#include "../include/TestParser.hpp"
+#include "TestParser.hpp"
 #include <cassert>
 void testingParser(void) {
   Parser parser = Parser("");

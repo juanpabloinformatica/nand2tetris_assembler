@@ -1,4 +1,4 @@
-#include "../include/Utilities.hpp"
+#include "Utilities.hpp"
 #include <cstring>
 
 unsigned long int bitsToULong(std::string instructionString,
