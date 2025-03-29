@@ -1,5 +1,6 @@
 #include "Utilities.hpp"
 #include <cstring>
+#include <iostream>
 
 unsigned long int bitsToULong(std::string instructionString,
                               C_INSTRUCTION_SECTION section, int initPos) {
@@ -121,3 +122,12 @@ C_INSTRUCTION_JUMP stringToJumpEnum(std::string jump) {
     return JUMP_JMP;
   return JUMP_UNDEFINED;
 };
+
+// std::string
+
+std::string getFilepath(std::string file) {
+  std::filesystem::path cwd = std::filesystem::current_path();
+  std::string filepath =
+      cwd.string() + std::string("/") + "testFiles" + std::string("/") + file;
+  return filepath;
+}

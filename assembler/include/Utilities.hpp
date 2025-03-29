@@ -1,15 +1,16 @@
 #ifndef __UTILITIES__
 #define __UTILITIES__
 #include <bitset>
+#include <filesystem>
 #include <fstream>
 #include <regex>
 #include <string>
 #define C_INSTRUCTION_PREFIX "111"
-#define A_INSTRUCTION_PREFIX "000"
+#define A_INSTRUCTION_PREFIX "0"
 #define DEST_BITS_LENGTH 3
 #define JUMP_BITS_LENGTH 3
 #define COMP_BITS_LENGTH 7
-#define A_BINARY_VALUE_LENGTH 13
+#define A_BINARY_VALUE_LENGTH 15
 enum C_INSTRUCTION_SECTION {
   C_UNDEFINED = -1,
   C_DEST = 0,
@@ -95,4 +96,5 @@ C_INSTRUCTION_DEST stringToDestEnum(std::string dest);
 C_INSTRUCTION_COMP stringToCompEnum(std::string comp);
 C_INSTRUCTION_JUMP stringToJumpEnum(std::string jump);
 
+std::string getFilepath(std::string file);
 #endif

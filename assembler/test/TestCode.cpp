@@ -3,7 +3,7 @@ void testingCode(void) {
   // "D=A", "M=D", "D=D-M", "M=M+D", "D;JLE"
   // Parser
   Code code = Code();
-  Parser parser = Parser("");
+  Parser parser = Parser();
   const int testArrayLength = 10;
   std::string testArray[testArrayLength] = {"D=A",   "M=D",   "D=D-M", "M=D+M",
                                             "D;JLE", "0;JMP", "@0",    "@2",

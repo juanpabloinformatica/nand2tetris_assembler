@@ -3,7 +3,14 @@
 #include <string>
 #include <typeinfo>
 
-Code::Code() {};
+Code::Code() {
+  std::cout << "[ INIT CODE ]" << std::endl;
+  this->destBinary = "";
+  this->compBinary = "";
+  this->jumpBinary = "";
+  this->binaryValue = "";
+  this->binaryInstruction = "";
+};
 void Code::setDestBinary(std::string currentDest) {
   C_INSTRUCTION_DEST destEnum = stringToDestEnum(currentDest);
   this->destBinary = std::bitset<DEST_BITS_LENGTH>(destEnum).to_string();
@@ -40,6 +47,13 @@ void Code::setBinaryInstruction(COMMAND_TYPE type) {
   }
 }
 
+void Code::resetCode(void) {
+  this->destBinary = "";
+  this->compBinary = "";
+  this->jumpBinary = "";
+  this->binaryValue = "";
+  this->binaryInstruction = "";
+}
 std::string Code::getDestBinary(void) { return this->destBinary; }
 std::string Code::getCompBinary(void) { return this->compBinary; }
 std::string Code::getJumpBinary(void) { return this->jumpBinary; }

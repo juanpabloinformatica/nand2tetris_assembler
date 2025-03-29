@@ -1,7 +1,7 @@
 #include "TestParser.hpp"
 #include <cassert>
 void testingParser(void) {
-  Parser parser = Parser("");
+  Parser parser = Parser();
   const int testArrayLength = 5;
   std::string testArray[testArrayLength] = {"D=A", "M=D", "D=D-M", "M=M+D",
                                             "D;JLE"};

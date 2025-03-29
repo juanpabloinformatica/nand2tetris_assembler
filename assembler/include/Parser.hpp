@@ -16,7 +16,6 @@ private:
   int indexCurrentInstruction;
 
 public:
-  std::fstream file;
   Parser();
   bool hasMoreCommands();
   bool advance();

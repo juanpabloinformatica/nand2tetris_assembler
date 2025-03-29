@@ -1,7 +1,7 @@
 #include "Parser.hpp"
 
 Parser::Parser() {
-  std::cout << "[ INIT PARSING ]" << std::endl;
+  std::cout << "[ INIT PARSER ]" << std::endl;
   this->dest = "";
   this->comp = "";
   this->jump = "";
@@ -18,6 +18,7 @@ Parser::Parser() {
   // }
 }
 // bool Parser::hasMoreCommands() { return !this->file.eof(); }
+//
 // bool Parser::advance() { return this->hasMoreCommands(); }
 
 // COMMAND_TYPE Parser::getCommandType(std::string currentCommand) {
@@ -72,13 +73,16 @@ void Parser::setDest(std::string currentCommand) {
 void Parser::setComp(std::string currentCommand) {
   std::string comp;
   std::string expr;
+  std::string exprByGetline;
   std::string currentChar;
   int currentCommandLenght = currentCommand.length();
   expr = ";";
+  exprByGetline = "\r";
   comp = "";
   int i;
   for (i = this->indexCurrentInstruction;
-       i < currentCommandLenght && (currentChar = currentCommand[i]) != expr;
+       i < currentCommandLenght && (currentChar = currentCommand[i]) != expr &&
+       currentChar != exprByGetline;
        i++) {
     comp += currentChar;
   }

@@ -22,5 +22,6 @@ public:
   std::string getCompBinary(void);
   std::string getJumpBinary(void);
   std::string getBinaryInstruction(void);
+  void resetCode(void);
 };
 #endif
