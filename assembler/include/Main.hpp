@@ -3,4 +3,5 @@
 #include "TestCode.hpp"
 #include "TestParser.hpp"
 #include "Control.hpp"
+#include "SymbolTable.hpp"
 #endif

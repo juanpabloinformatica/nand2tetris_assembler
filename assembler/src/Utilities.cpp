@@ -131,3 +131,7 @@ std::string getFilepath(std::string file) {
       cwd.string() + std::string("/") + "testFiles" + std::string("/") + file;
   return filepath;
 }
+bool isNumber(std::string stringNumber) {
+  return !stringNumber.empty() &&
+         std::all_of(stringNumber.begin(), stringNumber.end(), ::isdigit);
+}

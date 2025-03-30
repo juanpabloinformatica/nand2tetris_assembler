@@ -1,6 +1,6 @@
 # Thanks to Job Vranish (https://spin.atomicobject.com/2016/08/26/makefile-c-projects/) // inspired from
 # https://makefiletutorial.com
-CXXFLAGS := -g -Wall -Werror -std=c++11
+CXXFLAGS := -g -Wall -Werror -std=c++20
 CXX  := g++
 TARGET_EXEC  := assembler
 
@@ -32,6 +32,8 @@ CPPFLAGS := $(INC_FLAGS) -MMD -MP
 $(BUILD_DIR)/$(TARGET_EXEC):$(OBJS)
 	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
 
+#build the compiledb
+
 # Build step for C source
 # $(BUILD_DIR)/%.c.o: %.c
 # 	mkdir -p $(dir $@)
@@ -42,6 +44,9 @@ $(BUILD_DIR)/$(TARGET_EXEC):$(OBJS)
 $(BUILD_DIR)/%.cpp.o: %.cpp
 	mkdir -p $(dir $@)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+
+# compile_commands.json: $(SRCS)
+# 	compiledb
 
 .PHONY: clean
 clean:

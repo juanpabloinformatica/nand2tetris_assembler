@@ -97,4 +97,7 @@ C_INSTRUCTION_COMP stringToCompEnum(std::string comp);
 C_INSTRUCTION_JUMP stringToJumpEnum(std::string jump);
 
 std::string getFilepath(std::string file);
+// taken from stack overflow
+bool isNumber(std::string stringNumber);
+
 #endif
