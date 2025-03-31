@@ -10,8 +10,9 @@ INC_DIR := ./include
 TEST_DIR := ./test
 
 # this can be done better
-SRCS := $(wildcard $(SRC_DIR)/*.cpp)
-SRCS += $(wildcard $(TEST_DIR)/*.cpp)
+# SRCS := $(wildcard $(SRC_DIR)/*.cpp)
+# SRCS += $(wildcard $(TEST_DIR)/*.cpp)
+SRCS := $(shell find . -type f -name "*.cpp")
 OBJS:= $(SRCS:%=$(BUILD_DIR)/%.o)
 
 # --------- I want to understand this part -------------
