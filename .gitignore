@@ -2,5 +2,6 @@ tags
 build
 .cache
 Session.vim
+./compile_commands.json
 
 
